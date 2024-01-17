@@ -72,7 +72,7 @@ class Website extends StatelessWidget
           document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
           document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
           document.querySelector('.logo a:first-child').style.display='none';
-          elements = document.querySelectorAll('.top-category-wrapper a').fzorEach(element => {
+          elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
             element.style.textDecoration = 'none';
           });
         """;
