@@ -50,8 +50,8 @@ class Website extends StatelessWidget
       onProgress: (int progress) {
         if (progress == 100) {
           String jsCode = """
-            document.getElementsByClassName('top-user-auth')[0].style.display='none';
-            document.getElementsByClassName('top-search')[0].style.marginTop='-19vh';
+            document.getElementById('app').style.paddingTop='5px';
+            document.getElementsByClassName('top-search')[0].style.marginTop='-130px';
             document.getElementsByClassName('top-search')[0].style.paddingRight='22px';
             document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
             document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
@@ -59,6 +59,12 @@ class Website extends StatelessWidget
             elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
               element.style.textDecoration = 'none';
             });
+            if(document.getElementsByClassName('top-user')[0] !== undefined){
+              document.getElementsByClassName('top-user')[0].style.display='none';
+            }
+            if(document.getElementsByClassName('top-user-auth')[0] !== undefined){
+              document.getElementsByClassName('top-user-auth')[0].style.display='none';
+            }
           """;
           controller?.runJavascript(jsCode);
         }
@@ -66,8 +72,8 @@ class Website extends StatelessWidget
       onPageFinished: (String string) {
 
         String jsCode = """
-          document.getElementsByClassName('top-user-auth')[0].style.display='none';
-          document.getElementsByClassName('top-search')[0].style.marginTop='-19vh';
+          document.getElementById('app').style.paddingTop='5px';
+          document.getElementsByClassName('top-search')[0].style.marginTop='-130px';
           document.getElementsByClassName('top-search')[0].style.paddingRight='22px';
           document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
           document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
@@ -75,6 +81,12 @@ class Website extends StatelessWidget
           elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
             element.style.textDecoration = 'none';
           });
+          if(document.getElementsByClassName('top-user')[0] !== undefined){
+            document.getElementsByClassName('top-user')[0].style.display='none';
+          }
+          if(document.getElementsByClassName('top-user-auth')[0] !== undefined){
+            document.getElementsByClassName('top-user-auth')[0].style.display='none';
+          }
         """;
         controller?.runJavascript(jsCode);
 
