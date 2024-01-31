@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:test/web_app.dart';
+import 'package:flutter_price_base_webview/web_app.dart';
 
 class HomeScreen extends StatefulWidget {
 

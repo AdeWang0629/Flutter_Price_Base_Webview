@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(const WebApp());
 
@@ -91,9 +92,27 @@ class Website extends StatelessWidget
         controller?.runJavascript(jsCode);
 
       },
+      navigationDelegate: (NavigationRequest request) {
+        if (!request.url.contains('price-base.com')) {
+          launchURLInBrowser(request.url);
+          return NavigationDecision.prevent;
+        }else{
+          return NavigationDecision.navigate;
+        }
+      },
       onWebViewCreated: (WebViewController webViewController) {
         controller = webViewController;
       },
     );
+  }
+
+  Future<void> launchURLInBrowser(String url) async {
+    // ignore: deprecated_member_use
+    if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
+      await launch(url, forceSafariVC: false, forceWebView: false);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

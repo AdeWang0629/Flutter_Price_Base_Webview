@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test/home.dart';
+import 'package:flutter_price_base_webview/home.dart';
 
 void main() {
   runApp(const MyApp());
