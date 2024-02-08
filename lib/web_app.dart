@@ -93,10 +93,15 @@ class Website extends StatelessWidget
 
       },
       navigationDelegate: (NavigationRequest request) {
+        if (kDebugMode) {
+          print(request.url);
+        }
         if (!request.url.contains('price-base.com')) {
-          launchURLInBrowser(request.url);
+          if (!request.url.contains('google')) {
+            launchURLInBrowser(request.url);
+          }
           return NavigationDecision.prevent;
-        }else{
+        } else {
           return NavigationDecision.navigate;
         }
       },
