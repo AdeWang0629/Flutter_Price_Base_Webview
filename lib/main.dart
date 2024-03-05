@@ -3,26 +3,27 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_price_base_webview/home.dart';
+import './firebase_options.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 // // TODO: Define the background message handler
-// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-//  await Firebase.initializeApp();
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+ await Firebase.initializeApp();
 
-//  if (kDebugMode) {
-//    print("Handling a background message: ${message.messageId}");
-//    print('Message data: ${message.data}');
-//    print('Message notification22222222222222222222222222222222222: ${message.notification?.title}');
-//    print('Message notification222222222222222222222222222222222222222: ${message.notification?.body}');
-//  }
-// }
+ if (kDebugMode) {
+   print("Handling a background message: ${message.messageId}");
+   print('Message data: ${message.data}');
+   print('Message notification22222222222222222222222222222222222: ${message.notification?.title}');
+   print('Message notification222222222222222222222222222222222222222: ${message.notification?.body}');
+ }
+}
 
 Future<void> main() async {
   // TODO: Request permission
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    //  options: DefaultFirebaseOptions.currentPlatform,
+     options: DefaultFirebaseOptions.currentPlatform,
   );
   final messaging = FirebaseMessaging.instance;
 
@@ -48,17 +49,17 @@ Future<void> main() async {
     print('Registration Token=$token');
   }
   // // TODO: Set up foreground message handler
-  // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-  //   if (kDebugMode) {
-  //     print('Handling a foreground message: ${message.messageId}');
-  //     print('Message data: ${message.data}');
-  //     print('Message notification11111111111111111111111111111111111111111: ${message.notification?.title}');
-  //     print('Message notification1111111111111111111111111111111111111111111: ${message.notification?.body}');
-  //   }
-  //   showMessageAlert(message);
-  // });
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    if (kDebugMode) {
+      print('Handling a foreground message: ${message.messageId}');
+      print('Message data: ${message.data}');
+      print('Message notification11111111111111111111111111111111111111111: ${message.notification?.title}');
+      print('Message notification1111111111111111111111111111111111111111111: ${message.notification?.body}');
+    }
+    showMessageAlert(message);
+  });
   // // TODO: Set up background message handler
-  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(MaterialApp(
     navigatorKey: navigatorKey,
     debugShowCheckedModeBanner: false,
