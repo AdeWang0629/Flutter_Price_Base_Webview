@@ -23,7 +23,7 @@ Future<void> main() async {
   // TODO: Request permission
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-     options: DefaultFirebaseOptions.currentPlatform,
+     options: DefaultFirebaseOptions.currentPlatform
   );
   final messaging = FirebaseMessaging.instance;
 

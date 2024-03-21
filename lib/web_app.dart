@@ -51,21 +51,21 @@ class Website extends StatelessWidget
       onProgress: (int progress) {
         if (progress == 100) {
           String jsCode = """
-            document.getElementById('app').style.paddingTop='5px';
-            document.getElementsByClassName('top-search')[0].style.marginTop='-130px';
-            document.getElementsByClassName('top-search')[0].style.paddingRight='22px';
-            document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
-            document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
-            document.querySelector('.logo a:first-child').style.display='none';
-            elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
-              element.style.textDecoration = 'none';
-            });
-            if(document.getElementsByClassName('top-user')[0] !== undefined){
-              document.getElementsByClassName('top-user')[0].style.display='none';
-            }
-            if(document.getElementsByClassName('top-user-auth')[0] !== undefined){
-              document.getElementsByClassName('top-user-auth')[0].style.display='none';
-            }
+            // document.getElementById('app').style.paddingTop='5px';
+            // document.getElementsByClassName('top-search')[0].style.marginTop='-130px';
+            // document.getElementsByClassName('top-search')[0].style.paddingRight='22px';
+            // document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
+            // document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
+            // document.querySelector('.logo a:first-child').style.display='none';
+            // elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
+            //   element.style.textDecoration = 'none';
+            // });
+            // if(document.getElementsByClassName('top-user')[0] !== undefined){
+            //   document.getElementsByClassName('top-user')[0].style.display='none';
+            // }
+            // if(document.getElementsByClassName('top-user-auth')[0] !== undefined){
+            //   document.getElementsByClassName('top-user-auth')[0].style.display='none';
+            // }
           """;
           controller?.runJavascript(jsCode);
         }
@@ -73,21 +73,21 @@ class Website extends StatelessWidget
       onPageFinished: (String string) {
 
         String jsCode = """
-          document.getElementById('app').style.paddingTop='5px';
-          document.getElementsByClassName('top-search')[0].style.marginTop='-130px';
-          document.getElementsByClassName('top-search')[0].style.paddingRight='22px';
-          document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
-          document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
-          document.querySelector('.logo a:first-child').style.display='none';
-          elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
-            element.style.textDecoration = 'none';
-          });
-          if(document.getElementsByClassName('top-user')[0] !== undefined){
-            document.getElementsByClassName('top-user')[0].style.display='none';
-          }
-          if(document.getElementsByClassName('top-user-auth')[0] !== undefined){
-            document.getElementsByClassName('top-user-auth')[0].style.display='none';
-          }
+          // document.getElementById('app').style.paddingTop='5px';
+          // document.getElementsByClassName('top-search')[0].style.marginTop='-130px';
+          // document.getElementsByClassName('top-search')[0].style.paddingRight='22px';
+          // document.getElementsByClassName('right-box')[0].style.marginTop='1.5vh';
+          // document.getElementsByClassName('right-box')[0].style.marginButtom='1.2vh';
+          // document.querySelector('.logo a:first-child').style.display='none';
+          // elements = document.querySelectorAll('.top-category-wrapper a').forEach(element => {
+          //   element.style.textDecoration = 'none';
+          // });
+          // if(document.getElementsByClassName('top-user')[0] !== undefined){
+          //   document.getElementsByClassName('top-user')[0].style.display='none';
+          // }
+          // if(document.getElementsByClassName('top-user-auth')[0] !== undefined){
+          //   document.getElementsByClassName('top-user-auth')[0].style.display='none';
+          // }
         """;
         controller?.runJavascript(jsCode);
 
@@ -96,7 +96,9 @@ class Website extends StatelessWidget
         if (kDebugMode) {
           print(request.url);
         }
-        if (!request.url.contains('price-base.com')) {
+        if(request.url.contains('cf.im-apps.net')){
+          return NavigationDecision.prevent;
+        }else if (!request.url.contains('price-base.com')) {
           if (!request.url.contains('google')) {
             launchURLInBrowser(request.url);
           }
